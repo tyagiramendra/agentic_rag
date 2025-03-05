@@ -1,15 +1,19 @@
 import streamlit as st
 import time
-from agents.adaptive import AdaptiveRag
-adapt_rag = AdaptiveRag()
+from src.graphs.agentic_rag import AgenticRag
+from src.graphs.adaptive_rag import AdaptiveRAG
+adapt_rag = AdaptiveRAG()
+
 # Streamed response emulator
 def response_generator(prompt):
     #contexts,response = generation.contextual_generation(prompt)
-    response,source=adapt_rag._execute(prompt)
+    #response,source=adapt_rag._execute(prompt)
+    response=adapt_rag._execute(prompt)
+    st.write(f"Response:{response}")
     for word in response.split():
         yield word + " "
         time.sleep(0.05)
-    st.write("Source:",source)
+    #st.write("Source:",source)
 
 st.title("Indian Budget 2025-26 QnA")
 st.divider()

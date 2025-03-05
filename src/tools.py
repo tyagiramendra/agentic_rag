@@ -1,6 +1,6 @@
 from langchain.tools.retriever import create_retriever_tool
 from src.retrival import Retrieval
-from langchain_community.tools import ArxivQueryRun,WikipediaQueryRun
+from langchain_community.tools import ArxivQueryRun,WikipediaQueryRun, TavilySearchResults
 from langchain_community.utilities import WikipediaAPIWrapper,ArxivAPIWrapper
 
 retrival=Retrieval()
@@ -15,3 +15,4 @@ wikipedia_tool=WikipediaQueryRun(api_wrapper=api_wrapper_wiki)
 
 api_wrapper_arxiv=ArxivAPIWrapper(top_k_results=1,doc_content_chars_max=250)
 arxiv_tool=ArxivQueryRun(api_wrapper=api_wrapper_arxiv)
+web_search_tool = TavilySearchResults(k=4)

@@ -21,7 +21,7 @@ from src.models import Grade, AgentState
 
 tools=[retriever_tool,wikipedia_tool]
 
-class AdaptiveRag():
+class AgenticRag():
     def __init__(self):
         self.model = ChatGroq(model="qwen-2.5-32b")
     
@@ -199,6 +199,6 @@ class AdaptiveRag():
         return response["messages"][-1].content, source_tool
 
 if __name__ == "__main__":
-    agentic_rag = AdaptiveRag()
+    agentic_rag = AgenticRag()
     agentic_rag._execute("What is machine learning")
     print(agentic_rag)
